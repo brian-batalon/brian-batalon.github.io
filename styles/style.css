@@ -821,7 +821,17 @@ section {
     display: flex;
     flex-direction: column;
     margin: 0 !important;
-    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.9);
+}
+
+.video-project-card.expanded::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: -1;
 }
 
 .video-project-card.expanded .video-thumbnail {
