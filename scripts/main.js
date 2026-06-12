@@ -416,10 +416,14 @@ document.querySelectorAll('.video-project-card .project-preview-btn').forEach(bt
             btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
             video.play();
             document.body.style.overflow = 'hidden';
+            card.style.top = '50%';
+            card.style.left = '50%';
         } else {
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
+            card.style.top = '';
+            card.style.left = '';
         }
     });
 });
@@ -564,6 +568,8 @@ document.addEventListener('keydown', (e) => {
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
+            expandedCard.style.top = '';
+            expandedCard.style.left = '';
             return;
         }
         
@@ -667,7 +673,6 @@ if (contactForm) {
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         
-        // Show loading animation
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         

@@ -809,17 +809,18 @@ section {
 /* ========== EXPANDED VIDEO CARD ========== */
 .video-project-card.expanded {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50% !important;
+    left: 50% !important;
     transform: translate(-50%, -50%) !important;
     width: 90vw;
     max-width: 1000px;
-    z-index: 1500;
+    z-index: 9999;
     border-radius: 20px;
-    box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 0 3000px rgba(0, 0, 0, 0.85);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    margin: 0 !important;
 }
 
 .video-project-card.expanded .video-thumbnail {
