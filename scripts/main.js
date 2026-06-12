@@ -317,71 +317,19 @@ const projectsData = {
 
 // ========== CERTIFICATE DATA ==========
 const certificateData = {
-    'safety-officer': {
-        title: 'Safety Officer 2',
-        issuer: 'Serendipity Multi-Purpose Cooperative',
-        image: 'assets/images/certificates/safety-officer.jpg'
-    },
-    'ethical-hacker': {
-        title: 'Ethical Hacker',
-        issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy',
-        image: 'assets/images/certificates/ethical-hacker.jpg'
-    },
-    'os-basics': {
-        title: 'Operating Systems Basics',
-        issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy',
-        image: 'assets/images/certificates/os-basics.jpg'
-    },
-    'linux-unhatched': {
-        title: 'Linux Unhatched',
-        issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy',
-        image: 'assets/images/certificates/linux-unhatched.jpg'
-    },
-    'apply-ai': {
-        title: 'Apply AI: Analyze Customer Reviews',
-        issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy',
-        image: 'assets/images/certificates/apply-ai.jpg'
-    },
-    'modern-ai': {
-        title: 'Introduction to Modern AI',
-        issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy',
-        image: 'assets/images/certificates/modern-ai.jpg'
-    },
-    'seminar1': {
-        title: 'Cloud or Edge: Understanding the Network Environment',
-        issuer: '',
-        image: 'assets/images/certificates/seminar1.jpg'
-    },
-    'seminar2': {
-        title: 'Exploring Ideas and Innovating Techniques In Forming a Technologically Inclined Future',
-        issuer: '',
-        image: 'assets/images/certificates/seminar2.jpg'
-    },
-    'seminar3': {
-        title: 'Building Construction',
-        issuer: '',
-        image: 'assets/images/certificates/seminar3.jpg'
-    },
-    'seminar4': {
-        title: 'Electronics Manufacturing',
-        issuer: '',
-        image: 'assets/images/certificates/seminar4.jpg'
-    },
-    'seminar5': {
-        title: 'Radio Broadcasting',
-        issuer: '',
-        image: 'assets/images/certificates/seminar5.jpg'
-    },
-    'vice-president': {
-        title: 'Vice President for Academic Affairs',
-        issuer: 'IECEP - URS Morong Student Chapter',
-        image: 'assets/images/certificates/vice-president.jpg'
-    },
-    'iecep-officer': {
-        title: 'IECEP National Student Officer',
-        issuer: 'Institute of Electronics Engineers of the Philippines',
-        image: 'assets/images/certificates/iecep-officer.jpg'
-    }
+    'safety-officer': { title: 'Safety Officer 2', issuer: 'Serendipity Multi-Purpose Cooperative', image: 'assets/images/certificates/safety-officer.jpg' },
+    'ethical-hacker': { title: 'Ethical Hacker', issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy', image: 'assets/images/certificates/ethical-hacker.jpg' },
+    'os-basics': { title: 'Operating Systems Basics', issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy', image: 'assets/images/certificates/os-basics.jpg' },
+    'linux-unhatched': { title: 'Linux Unhatched', issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy', image: 'assets/images/certificates/linux-unhatched.jpg' },
+    'apply-ai': { title: 'Apply AI: Analyze Customer Reviews', issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy', image: 'assets/images/certificates/apply-ai.jpg' },
+    'modern-ai': { title: 'Introduction to Modern AI', issuer: 'DICT-ITU DTC Initiative | Cisco Networking Academy', image: 'assets/images/certificates/modern-ai.jpg' },
+    'seminar1': { title: 'Cloud or Edge: Understanding the Network Environment', issuer: '', image: 'assets/images/certificates/seminar1.jpg' },
+    'seminar2': { title: 'Exploring Ideas and Innovating Techniques In Forming a Technologically Inclined Future', issuer: '', image: 'assets/images/certificates/seminar2.jpg' },
+    'seminar3': { title: 'Building Construction', issuer: '', image: 'assets/images/certificates/seminar3.jpg' },
+    'seminar4': { title: 'Electronics Manufacturing', issuer: '', image: 'assets/images/certificates/seminar4.jpg' },
+    'seminar5': { title: 'Radio Broadcasting', issuer: '', image: 'assets/images/certificates/seminar5.jpg' },
+    'vice-president': { title: 'Vice President for Academic Affairs', issuer: 'IECEP - URS Morong Student Chapter', image: 'assets/images/certificates/vice-president.jpg' },
+    'iecep-officer': { title: 'IECEP National Student Officer', issuer: 'Institute of Electronics Engineers of the Philippines', image: 'assets/images/certificates/iecep-officer.jpg' }
 };
 
 // ========== VIDEO HOVER AUTOPLAY ==========
@@ -415,13 +363,11 @@ document.querySelectorAll('.video-project-card .project-preview-btn').forEach(bt
         if (card.classList.contains('expanded')) {
             btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
             video.play();
-            document.body.style.overflow = 'hidden';
             card.style.top = '50%';
             card.style.left = '50%';
         } else {
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
-            document.body.style.overflow = 'auto';
             card.style.top = '';
             card.style.left = '';
         }
@@ -567,7 +513,6 @@ document.addEventListener('keydown', (e) => {
             expandedCard.classList.remove('expanded');
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
-            document.body.style.overflow = 'auto';
             expandedCard.style.top = '';
             expandedCard.style.left = '';
             return;
