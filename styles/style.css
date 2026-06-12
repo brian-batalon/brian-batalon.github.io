@@ -814,23 +814,25 @@ section {
     transform: translate(-50%, -50%) !important;
     width: 90vw;
     max-width: 1000px;
-    z-index: 9999;
+    z-index: 10000;
     border-radius: 20px;
-    box-shadow: 0 0 0 3000px rgba(0, 0, 0, 0.85);
-    overflow: hidden;
+    box-shadow: 0 0 0 3000px rgba(0, 0, 0, 0.9);
+    overflow: visible;
     display: flex;
     flex-direction: column;
     margin: 0 !important;
+    isolation: isolate;
 }
 
 .video-project-card.expanded .video-thumbnail {
     height: auto;
     aspect-ratio: 16/9;
-    max-height: 60vh;
+    max-height: 50vh;
     background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 20px 20px 0 0;
 }
 
 .video-project-card.expanded .project-video {
@@ -852,6 +854,9 @@ section {
 .video-project-card.expanded .project-info {
     background: var(--bg-secondary);
     padding: 1.5rem;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    z-index: 10001;
 }
 
 /* ========== THESIS IMAGE SLIDER ========== */
