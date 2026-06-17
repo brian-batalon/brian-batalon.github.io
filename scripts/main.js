@@ -361,12 +361,31 @@ document.querySelectorAll('.video-project-card .project-preview-btn').forEach(bt
         card.classList.toggle('expanded');
         
         if (card.classList.contains('expanded')) {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.classList.add('expanded-overlay');
+            overlay.id = 'expandedOverlay';
+            document.body.appendChild(overlay);
+            
             btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
             video.play();
             document.body.style.overflow = 'hidden';
             card.style.top = '50%';
             card.style.left = '50%';
+            
+            // Close on overlay click
+            overlay.addEventListener('click', () => {
+                card.classList.remove('expanded');
+                btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
+                video.pause();
+                document.body.style.overflow = 'auto';
+                card.style.top = '';
+                card.style.left = '';
+                overlay.remove();
+            });
         } else {
+            const overlay = document.getElementById('expandedOverlay');
+            if (overlay) overlay.remove();
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
@@ -508,16 +527,19 @@ certModal.addEventListener('click', (e) => {
 // ========== ESCAPE KEY CLOSES ALL MODALS & EXPANDED CARDS ==========
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+        // In escape key section, update the expanded card part:
         const expandedCard = document.querySelector('.video-project-card.expanded');
         if (expandedCard) {
             const btn = expandedCard.querySelector('.project-preview-btn');
             const video = expandedCard.querySelector('.project-video');
+            const overlay = document.getElementById('expandedOverlay');
             expandedCard.classList.remove('expanded');
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
             expandedCard.style.top = '';
             expandedCard.style.left = '';
+            if (overlay) overlay.remove();
             return;
         }
         
