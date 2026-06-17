@@ -363,11 +363,13 @@ document.querySelectorAll('.video-project-card .project-preview-btn').forEach(bt
         if (card.classList.contains('expanded')) {
             btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
             video.play();
+            document.body.style.overflow = 'hidden';
             card.style.top = '50%';
             card.style.left = '50%';
         } else {
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
+            document.body.style.overflow = 'auto';
             card.style.top = '';
             card.style.left = '';
         }
@@ -513,6 +515,7 @@ document.addEventListener('keydown', (e) => {
             expandedCard.classList.remove('expanded');
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
+            document.body.style.overflow = 'auto';
             expandedCard.style.top = '';
             expandedCard.style.left = '';
             return;
