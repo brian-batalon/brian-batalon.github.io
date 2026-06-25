@@ -352,45 +352,45 @@ document.querySelectorAll('.video-project-card').forEach(card => {
 });
 
 // ========== SOFTWARE PROJECT FULL VIEW (EXPAND CARD) ==========
+let expandedOverlay = null;
+
 document.querySelectorAll('.video-project-card .project-preview-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const card = btn.closest('.video-project-card');
         const video = card.querySelector('.project-video');
         
-        card.classList.toggle('expanded');
-        
         if (card.classList.contains('expanded')) {
-            // Create overlay
-            const overlay = document.createElement('div');
-            overlay.classList.add('expanded-overlay');
-            overlay.id = 'expandedOverlay';
-            document.body.appendChild(overlay);
-            
-            btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
-            video.play();
-            document.body.style.overflow = 'hidden';
-            card.style.top = '50%';
-            card.style.left = '50%';
-            
-            // Close on overlay click
-            overlay.addEventListener('click', () => {
-                card.classList.remove('expanded');
-                btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
-                video.pause();
-                document.body.style.overflow = 'auto';
-                card.style.top = '';
-                card.style.left = '';
-                overlay.remove();
-            });
-        } else {
-            const overlay = document.getElementById('expandedOverlay');
-            if (overlay) overlay.remove();
+            // Close expanded view
+            card.classList.remove('expanded');
+            if (expandedOverlay) { expandedOverlay.remove(); expandedOverlay = null; }
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
             card.style.top = '';
             card.style.left = '';
+        } else {
+            // Open expanded view
+            expandedOverlay = document.createElement('div');
+            expandedOverlay.className = 'expanded-overlay';
+            expandedOverlay.id = 'expandedOverlay';
+            expandedOverlay.addEventListener('click', () => {
+                card.classList.remove('expanded');
+                if (expandedOverlay) { expandedOverlay.remove(); expandedOverlay = null; }
+                btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
+                video.pause();
+                document.body.style.overflow = 'auto';
+                card.style.top = '';
+                card.style.left = '';
+            });
+            document.body.appendChild(expandedOverlay);
+            
+            card.classList.add('expanded');
+            btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
+            video.play();
+            document.body.style.overflow = 'hidden';
+            card.style.top = '50%';
+            card.style.left = '50%';
         }
     });
 });
@@ -524,22 +524,20 @@ certModal.addEventListener('click', (e) => {
     }
 });
 
-// ========== ESCAPE KEY CLOSES ALL MODALS & EXPANDED CARDS ==========
+// ========== ESCAPE KEY CLOSES ALL ==========
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // In escape key section, update the expanded card part:
         const expandedCard = document.querySelector('.video-project-card.expanded');
         if (expandedCard) {
             const btn = expandedCard.querySelector('.project-preview-btn');
             const video = expandedCard.querySelector('.project-video');
-            const overlay = document.getElementById('expandedOverlay');
             expandedCard.classList.remove('expanded');
+            if (expandedOverlay) { expandedOverlay.remove(); expandedOverlay = null; }
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
             expandedCard.style.top = '';
             expandedCard.style.left = '';
-            if (overlay) overlay.remove();
             return;
         }
         
@@ -548,10 +546,7 @@ document.addEventListener('keydown', (e) => {
         }
         if (videoModal.classList.contains('active')) {
             videoModal.classList.remove('active');
-            if (videoFrame) {
-                videoFrame.pause();
-                videoFrame.src = '';
-            }
+            if (videoFrame) { videoFrame.pause(); videoFrame.src = ''; }
             document.body.style.overflow = 'auto';
         }
         if (certModal.classList.contains('active')) {
@@ -568,23 +563,17 @@ const musicIcon = musicToggle.querySelector('i');
 let isMusicPlaying = false;
 
 musicToggle.addEventListener('click', () => {
-    if (isMusicPlaying) {
-        pauseMusic();
-    } else {
-        playMusic();
-    }
+    if (isMusicPlaying) { pauseMusic(); } else { playMusic(); }
 });
 
 function playMusic() {
-    backgroundMusic.volume = 0.4; 
+    backgroundMusic.volume = 0.4;
     backgroundMusic.play().then(() => {
         isMusicPlaying = true;
         musicToggle.classList.add('playing');
         musicIcon.classList.remove('fa-music');
         musicIcon.classList.add('fa-volume-up');
-    }).catch(error => {
-        console.log('Music file not found or play prevented.');
-    });
+    }).catch(() => {});
 }
 
 function pauseMusic() {
@@ -600,186 +589,65 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const offsetTop = target.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+        if (target) { window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); }
     });
 });
 
-// ========== SCROLL REVEAL ANIMATION ==========
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// ========== SCROLL REVEAL ==========
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('section > *').forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'all 0.6s ease';
-    observer.observe(element);
+    element.style.opacity = '0'; element.style.transform = 'translateY(30px)'; element.style.transition = 'all 0.6s ease'; observer.observe(element);
 });
 
-// ========== CONTACT FORM HANDLING (FORMSPREE) ==========
+// ========== CONTACT FORM (FORMSPREE) ==========
 const contactForm = document.getElementById('contactForm');
-
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-        
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
-        
-        const formData = new FormData(contactForm);
-        
         try {
-            const response = await fetch('https://formspree.io/f/mzdqjblz', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            
-            if (response.ok) {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                submitBtn.style.background = '#00b894';
-                contactForm.reset();
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 3000);
-            } else {
-                submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed';
-                submitBtn.style.background = '#d63031';
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 3000);
-            }
-        } catch (error) {
-            submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed';
-            submitBtn.style.background = '#d63031';
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-                submitBtn.disabled = false;
-            }, 3000);
-        }
+            const response = await fetch('https://formspree.io/f/mzdqjblz', { method: 'POST', body: new FormData(contactForm), headers: { 'Accept': 'application/json' } });
+            if (response.ok) { submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!'; submitBtn.style.background = '#00b894'; contactForm.reset(); }
+            else { submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed'; submitBtn.style.background = '#d63031'; }
+        } catch { submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed'; submitBtn.style.background = '#d63031'; }
+        setTimeout(() => { submitBtn.innerHTML = originalText; submitBtn.style.background = ''; submitBtn.disabled = false; }, 3000);
     });
 }
 
-// ========== NAVBAR SCROLL EFFECT ==========
+// ========== NAVBAR SCROLL ==========
 const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => { navbar.style.boxShadow = window.scrollY > 100 ? '0 5px 20px rgba(0, 0, 0, 0.1)' : 'none'; });
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
-});
+// ========== CARD CLICKS ==========
+document.querySelectorAll('.project-card').forEach(card => { card.addEventListener('click', function() { const btn = this.querySelector('.project-preview-btn'); if (btn) btn.click(); }); });
+document.querySelectorAll('.cert-verifiable').forEach(card => { card.addEventListener('click', function() { const btn = this.querySelector('button.cert-view-btn'); if (btn) btn.click(); }); });
 
-// ========== PROJECT CARD CLICK ==========
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const previewBtn = this.querySelector('.project-preview-btn');
-        if (previewBtn) {
-            previewBtn.click();
-        }
-    });
-});
-
-// ========== CERTIFICATE CARD CLICK ==========
-document.querySelectorAll('.cert-verifiable').forEach(card => {
-    card.addEventListener('click', function() {
-        const viewBtn = this.querySelector('button.cert-view-btn');
-        if (viewBtn) {
-            viewBtn.click();
-        }
-    });
-});
-
-// ========== THESIS IMAGE SLIDER ==========
+// ========== THESIS SLIDER ==========
 document.querySelectorAll('.thesis-slider').forEach(slider => {
     const slides = slider.querySelector('.thesis-slides');
     const images = slides.querySelectorAll('img');
-    let currentSlide = 0;
-    let slideInterval;
-
-    function goToSlide(index) {
-        currentSlide = index;
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % images.length;
-        goToSlide(currentSlide);
-    }
-
-    function resetInterval() {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, 3000);
-    }
-
+    let currentSlide = 0, slideInterval;
+    function goToSlide(i) { currentSlide = i; slides.style.transform = `translateX(-${currentSlide * 100}%)`; }
+    function nextSlide() { currentSlide = (currentSlide + 1) % images.length; goToSlide(currentSlide); }
     slideInterval = setInterval(nextSlide, 3000);
-
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    slider.addEventListener('mouseleave', resetInterval);
+    slider.addEventListener('mouseleave', () => { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 3000); });
 });
 
-// ========== PERFORMANCE OPTIMIZATION ==========
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
+// ========== PERFORMANCE ==========
+function debounce(fn, ms) { let timer; return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), ms); }; }
+window.addEventListener('resize', debounce(() => { resizeCanvas(); initParticles(); }, 250));
 
-window.addEventListener('resize', debounce(() => {
-    resizeCanvas();
-    initParticles();
-}, 250));
-
-// ========== KEYBOARD SHORTCUTS ==========
+// ========== SHORTCUTS ==========
 document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 't') {
-        e.preventDefault();
-        themeToggle.click();
-    }
-    
-    if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
-        e.preventDefault();
-        musicToggle.click();
-    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 't') { e.preventDefault(); themeToggle.click(); }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'm') { e.preventDefault(); musicToggle.click(); }
 });
 
 // ========== INITIALIZATION ==========
-console.log('%c Portfolio Website Ready! %c🚀', 
-    'font-size: 20px; font-weight: bold; color: #6c5ce7;', 
-    'font-size: 20px;');
-console.log('%c Built with ❤️ and vanilla JavaScript', 
-    'font-size: 14px; color: #636e72;');
+console.log('%c Portfolio Website Ready! %c🚀', 'font-size: 20px; font-weight: bold; color: #6c5ce7;', 'font-size: 20px;');
