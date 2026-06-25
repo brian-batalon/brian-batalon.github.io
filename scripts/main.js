@@ -351,46 +351,24 @@ document.querySelectorAll('.video-project-card').forEach(card => {
     });
 });
 
-// ========== SOFTWARE PROJECT FULL VIEW (EXPAND CARD) ==========
+// ========== SOFTWARE PROJECT FULL VIEW ==========
 document.querySelectorAll('.video-project-card .project-preview-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const card = btn.closest('.video-project-card');
-        const video = card.querySelector('.project-video');
+        const projectId = btn.getAttribute('data-project');
+        const project = projectsData[projectId];
         
-        if (card.classList.contains('expanded')) {
-            // CLOSE
-            card.classList.remove('expanded');
-            const overlay = document.getElementById('expandedOverlay');
-            if (overlay) overlay.remove();
-            btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
-            video.pause();
-            document.body.style.overflow = 'auto';
-            card.style.top = '';
-            card.style.left = '';
-        } else {
-            // OPEN - create overlay FIRST
-            const overlay = document.createElement('div');
-            overlay.id = 'expandedOverlay';
-            overlay.className = 'expanded-overlay';
-            document.body.prepend(overlay);
-            
-            card.classList.add('expanded');
-            btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
-            video.play();
+        if (project && project.type === 'expand') {
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            if (videoFrame) {
+                videoFrame.src = project.videoUrl;
+                videoFrame.load();
+                videoFrame.play();
+            }
+            videoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            card.style.top = '50%';
-            card.style.left = '50%';
-            
-            overlay.addEventListener('click', () => {
-                card.classList.remove('expanded');
-                overlay.remove();
-                btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
-                video.pause();
-                document.body.style.overflow = 'auto';
-                card.style.top = '';
-                card.style.left = '';
-            });
         }
     });
 });

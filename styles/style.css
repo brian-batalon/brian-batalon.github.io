@@ -168,6 +168,18 @@ section { padding: 100px 2rem; }
     height: 100vh;
     background: rgba(0, 0, 0, 0.9);
     z-index: 99999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* ========== OVERLAY ACTIVE - RESET STACKING ========== */
+body:has(.expanded-overlay) .project-category,
+body:has(.expanded-overlay) .category-title,
+body:has(.expanded-overlay) section,
+body:has(.expanded-overlay) .certifications {
+    z-index: auto !important;
+    position: static !important;
+    transform: none !important;
+    isolation: auto !important;
 }
 
 /* ========== EXPANDED VIDEO CARD ========== */
@@ -178,19 +190,21 @@ section { padding: 100px 2rem; }
     transform: translate(-50%, -50%) !important;
     width: 90vw;
     max-width: 1000px;
-    max-height: 85vh;
+    max-height: 90vh;
     z-index: 100000;
     border-radius: 20px;
-    overflow: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     margin: 0 !important;
+    transition: none !important;
+    animation: slideUp 0.5s ease;
 }
 
 .video-project-card.expanded .video-thumbnail {
     height: auto;
     aspect-ratio: 16/9;
-    max-height: 55vh;
+    max-height: 50vh;
     background: #000;
     display: flex;
     align-items: center;
@@ -215,6 +229,7 @@ section { padding: 100px 2rem; }
     padding: 1.5rem;
     border-radius: 0 0 20px 20px;
     flex-shrink: 0;
+    display: block !important;
 }
 
 /* ========== THESIS IMAGE SLIDER ========== */
