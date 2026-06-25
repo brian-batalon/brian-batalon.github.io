@@ -352,8 +352,6 @@ document.querySelectorAll('.video-project-card').forEach(card => {
 });
 
 // ========== SOFTWARE PROJECT FULL VIEW (EXPAND CARD) ==========
-let expandedOverlay = null;
-
 document.querySelectorAll('.video-project-card .project-preview-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -361,29 +359,21 @@ document.querySelectorAll('.video-project-card .project-preview-btn').forEach(bt
         const video = card.querySelector('.project-video');
         
         if (card.classList.contains('expanded')) {
-            // Close expanded view
+            // CLOSE
             card.classList.remove('expanded');
-            if (expandedOverlay) { expandedOverlay.remove(); expandedOverlay = null; }
+            const overlay = document.getElementById('expandedOverlay');
+            if (overlay) overlay.remove();
             btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
             video.pause();
             document.body.style.overflow = 'auto';
             card.style.top = '';
             card.style.left = '';
         } else {
-            // Open expanded view
-            expandedOverlay = document.createElement('div');
-            expandedOverlay.className = 'expanded-overlay';
-            expandedOverlay.id = 'expandedOverlay';
-            expandedOverlay.addEventListener('click', () => {
-                card.classList.remove('expanded');
-                if (expandedOverlay) { expandedOverlay.remove(); expandedOverlay = null; }
-                btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
-                video.pause();
-                document.body.style.overflow = 'auto';
-                card.style.top = '';
-                card.style.left = '';
-            });
-            document.body.appendChild(expandedOverlay);
+            // OPEN - create overlay FIRST
+            const overlay = document.createElement('div');
+            overlay.id = 'expandedOverlay';
+            overlay.className = 'expanded-overlay';
+            document.body.prepend(overlay);
             
             card.classList.add('expanded');
             btn.innerHTML = '<i class="fas fa-compress"></i> Minimize';
@@ -391,6 +381,16 @@ document.querySelectorAll('.video-project-card .project-preview-btn').forEach(bt
             document.body.style.overflow = 'hidden';
             card.style.top = '50%';
             card.style.left = '50%';
+            
+            overlay.addEventListener('click', () => {
+                card.classList.remove('expanded');
+                overlay.remove();
+                btn.innerHTML = '<i class="fas fa-expand"></i> Full View';
+                video.pause();
+                document.body.style.overflow = 'auto';
+                card.style.top = '';
+                card.style.left = '';
+            });
         }
     });
 });
