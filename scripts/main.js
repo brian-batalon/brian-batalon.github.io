@@ -264,6 +264,15 @@ const projectsData = {
         liveLink: 'https://grademaster-production.up.railway.app/login?next=%2F',
         codeLink: 'https://github.com/brian-batalon/grademaster'
     },
+    soft4: {
+        title: 'OTMSR Portal',
+        description: 'OTMSR Portal — A biomedical equipment service management system for One Top Medical Systems Resources. Streamlines field operations with role-based dashboards, task scheduling via calendar, service report submissions, real-time team chat, document management, and data visualization with export capabilities.',
+        type: 'expand',
+        videoUrl: 'assets/videos/otmsr.mp4',
+        tech: ['React.js', 'Supabase', 'Recharts', 'Vercel'],
+        liveLink: 'https://otmsr-portal.vercel.app',
+        codeLink: 'https://github.com/brian-batalon/otmsr-portal'
+    },
     pcb1: {
         title: 'Arduino-based Medicine Reminder',
         description: 'This Arduino Nano-based medicine reminder uses an RTC DS1302 module for precise timekeeping, a 16x2 LCD and three navigation switches for user configuration, and an active buzzer with three LEDs to deliver audible and visual medication alerts.',
