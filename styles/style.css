@@ -261,6 +261,59 @@ body:has(.expanded-overlay) .certifications {
 .video-container video { width: 100%; max-height: 80vh; border-radius: 10px; display: block; }
 .close-video { color: white !important; z-index: 10; }
 
+/* ========== SKILLS SECTION ========== */
+.skills-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; }
+.skill-category-title { font-size: 1.3rem; color: var(--text-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--accent-color); }
+.skill-category-title i { color: var(--accent-color); }
+.skill-icons { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+.skill-icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; transition: transform 0.3s ease; }
+.skill-icon-item:hover { transform: translateY(-5px); }
+.skill-icon-item i { font-size: 2.5rem; animation: iconPulse 3s ease-in-out infinite; }
+.skill-icon-item span { font-size: 0.75rem; color: var(--text-secondary); font-weight: 500; }
+.skill-icon-item:nth-child(2) i { animation-delay: 0.2s; }
+.skill-icon-item:nth-child(3) i { animation-delay: 0.4s; }
+.skill-icon-item:nth-child(4) i { animation-delay: 0.6s; }
+.skill-icon-item:nth-child(5) i { animation-delay: 0.8s; }
+.skill-icon-item:nth-child(6) i { animation-delay: 1s; }
+.skill-icon-item:nth-child(7) i { animation-delay: 1.2s; }
+.skill-icon-item:nth-child(8) i { animation-delay: 1.4s; }
+.skill-icon-item:nth-child(9) i { animation-delay: 1.6s; }
+.skills-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.skills-col { min-width: 0; }
+.skills-row:has(.skills-col:nth-child(2)) .skills-col { grid-column: span 1; }
+[data-theme="dark"] .skill-icon-item img[alt="chatgpt"] { filter: invert(1); }
+.skill-icon-item img { animation: iconPulse 3s ease-in-out infinite; width: 40px; height: 40px; }
+.skill-icon-item:nth-child(8) img { animation-delay: 1.4s; }
+.skill-icon-item:nth-child(9) img { animation-delay: 1.6s; }
+[data-theme="dark"] .skill-icon-item img[alt="external-esp-car-dreamstale-lineal-dreamstale"] { filter: invert(1); }
+[data-theme="light"] .skill-icon-item img[alt="Chart.js"] { filter: invert(1); }
+[data-theme="dark"] .skill-icon-item img[alt="Plotly"] { filter: invert(1); }
+[data-theme="dark"] .skill-icon-item img[alt="external-k-nearest-neighbor-data-science-outline-outline-black-m-oki-orlando"] { filter: invert(1); }
+[data-theme="light"] .skill-icon-item img[alt="visible"] { filter: invert(1); }
+[data-theme="light"] .skill-icon-item img[alt="define-location"] { filter: invert(1); }
+[data-theme="light"] .skill-icon-item img[alt="goal"] { filter: invert(1); }
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@media (max-width: 768px) {
+    .skills-row { grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .skills-col { grid-column: span 1 !important; }
+    .skill-icons { gap: 1rem; justify-content: center; }
+    .skill-icon-item { width: 70px; margin-bottom: 0.5rem; }
+    .skill-icon-item i { font-size: 2rem; }
+    .skill-icon-item img { width: 32px !important; height: 32px !important; }
+    .skill-icon-item span { font-size: 0.65rem; text-align: center; }
+    .skill-category-title { font-size: 1.1rem; justify-content: center; margin-bottom: 1rem; }
+    .skills-container { gap: 0; }
+}
+
+/* ========== GITHUB SECTION ========== */
+.github-container { max-width: 900px; margin: 0 auto; }
+.github-chart { width: 100%; border-radius: 15px; }
+
 /* ========== CERTIFICATIONS ========== */
 .certifications .category-title { font-size: 1.6rem; color: var(--text-primary); margin: 2.5rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-color); display: flex; align-items: center; gap: 0.8rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
 .certifications .category-title:first-of-type { margin-top: 0; }
