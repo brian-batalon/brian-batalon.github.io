@@ -151,6 +151,34 @@ section { padding: 100px 2rem; }
 .project-link { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s ease; display: flex; align-items: center; gap: 0.3rem; }
 .project-link:hover { color: var(--accent-color); }
 
+.overlay-content { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+.desktop-notice-overlay { 
+    color: #ff6b6b; 
+    font-weight: 600; 
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.6);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+}
+.desktop-notice { 
+    font-size: 0.7rem; 
+    color: var(--accent-color); 
+    font-weight: 400; 
+    margin-left: auto;
+    padding: 0.2rem 0.8rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 20px;
+}
+
+.dv-notice-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
+.dv-notice-box { background: var(--bg-secondary); padding: 2rem; border-radius: 20px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+.dv-notice-box i { font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem; }
+.dv-notice-box h3 { color: var(--text-primary); margin-bottom: 0.5rem; }
+.dv-notice-box p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem; }
+.dv-notice-btns { display: flex; gap: 1rem; justify-content: center; }
+.dv-notice-cancel { padding: 0.6rem 1.5rem; border-radius: 50px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 500; }
+.dv-notice-continue { padding: 0.6rem 1.5rem; border-radius: 50px; border: none; background: var(--gradient-1); color: white; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 500; }
+
 /* ========== VIDEO PROJECT CARD (HOVER TO PLAY) ========== */
 .video-project-card .video-thumbnail { position: relative; overflow: hidden; height: 200px; background: #000; }
 .video-project-card .project-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; z-index: 2; }

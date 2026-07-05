@@ -636,5 +636,58 @@ document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'm') { e.preventDefault(); musicToggle.click(); }
 });
 
+// ========== DATA VISUALIZATION DESKTOP NOTICE ==========
+document.querySelectorAll('.dv-view-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const url = btn.getAttribute('data-url');
+        const isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            const overlay = document.createElement('div');
+            overlay.className = 'dv-notice-overlay';
+            overlay.innerHTML = `
+                <div class="dv-notice-box">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Desktop Only</h3>
+                    <p>This dashboard is not available on mobile devices. Please open it on a desktop computer.</p>
+                    <div class="dv-notice-btns">
+                        <button class="dv-notice-cancel">OK</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            overlay.querySelector('.dv-notice-cancel').onclick = () => overlay.remove();
+            overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+        } else {
+            window.open(url, '_blank');
+        }
+    });
+});
+
+document.querySelectorAll('.dv-live-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
+        if (isMobile) {
+            e.preventDefault();
+            const overlay = document.createElement('div');
+            overlay.className = 'dv-notice-overlay';
+            overlay.innerHTML = `
+                <div class="dv-notice-box">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Desktop Only</h3>
+                    <p>This dashboard is not available on mobile devices. Please open it on a desktop computer.</p>
+                    <div class="dv-notice-btns">
+                        <button class="dv-notice-cancel">OK</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            overlay.querySelector('.dv-notice-cancel').onclick = () => overlay.remove();
+            overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+        }
+    });
+});
+
 // ========== INITIALIZATION ==========
 console.log('%c Portfolio Website Ready! %c🚀', 'font-size: 20px; font-weight: bold; color: #6c5ce7;', 'font-size: 20px;');
