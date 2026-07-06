@@ -19,6 +19,10 @@
     <!-- Tab Icon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">   
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!-- Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- ========== BACKGROUND ANIMATION CANVAS ========== -->
@@ -86,7 +90,13 @@
             </div>
             <div class="hero-image">
                 <div class="image-wrapper">
-                    <img src="assets/images/profile2.jpg" alt="Profile Photo">
+                    <div class="hero-slideshow">
+                        <img src="assets/images/pfp1.png" alt="Profile Photo" class="active">
+                        <img src="assets/images/pfp2.png" alt="Profile Photo">
+                        <img src="assets/images/pfp3.png" alt="Profile Photo">
+                        <img src="assets/images/pfp4.png" alt="Profile Photo">
+                        <img src="assets/images/pfp5.png" alt="Profile Photo">
+                    </div>
                 </div>
             </div>
         </div>
@@ -201,12 +211,19 @@
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/6rKVvbOYTRo?si=VbYLgVFpohwW9d9q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         <div class="youtube-video">
-                            <iframe src="YOUR_YOUTUBE_EMBED_LINK_2" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pC6s8zzBzY8?si=ZAXGrpAY5wgtq0Zr&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         <div class="youtube-video">
-                            <iframe src="YOUR_YOUTUBE_EMBED_LINK_3" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6t7pB5MOBSg?si=iTM3FjklYQk6uOTy&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
+                </div>
+
+                <!-- Location -->
+                <div class="about-subsection">
+                    <h4><i class="fas fa-map-marker-alt"></i> Where I'm From</h4>
+                    <p>Angono, Rizal — The Art Capital of the Philippines</p>
+                    <div class="map-container" id="about-map"></div>
                 </div>
             </div>
         </div>

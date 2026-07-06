@@ -695,5 +695,31 @@ document.getElementById('aboutExpandBtn').addEventListener('click', function() {
     document.getElementById('aboutExpandContent').classList.toggle('open');
 });
 
+// ========== ABOUT MAP ==========
+document.getElementById('aboutExpandBtn').addEventListener('click', function() {
+    setTimeout(function() {
+        if (!window.aboutMapLoaded) {
+            const map = L.map('about-map').setView([14.525, 121.16], 13);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap'
+            }).addTo(map);
+            L.marker([14.525, 121.16]).addTo(map)
+                .bindPopup('<b>Angono, Rizal</b><br>Art Capital of the Philippines')
+                .openPopup();
+            window.aboutMapLoaded = true;
+            setTimeout(function() { map.invalidateSize(); }, 100);
+        }
+    }, 500);
+});
+
+// ========== HERO IMAGE SLIDESHOW ==========
+const heroImages = document.querySelectorAll('.hero-slideshow img');
+let currentHeroImg = 0;
+setInterval(() => {
+    heroImages[currentHeroImg].classList.remove('active');
+    currentHeroImg = (currentHeroImg + 1) % heroImages.length;
+    heroImages[currentHeroImg].classList.add('active');
+}, 3000);
+
 // ========== INITIALIZATION ==========
 console.log('%c Portfolio Website Ready! %c🚀', 'font-size: 20px; font-weight: bold; color: #6c5ce7;', 'font-size: 20px;');
