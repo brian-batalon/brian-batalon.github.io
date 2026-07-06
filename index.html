@@ -38,22 +38,32 @@
         </audio>
     </div>
 
-    <!-- ========== NAVIGATION ========== -->
+    <!-- ========== NAVIGATION BAR ========== -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">&lt;BRIAN EZEKIEL D. BATALON/&gt;</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+            <div class="nav-pill">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
             <div class="nav-actions">
+                <div class="nav-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
                 <button id="themeToggle" class="theme-btn" title="Toggle Theme">
                     <i class="fas fa-moon"></i>
+                </button>
+                <button id="musicToggleMobile" class="music-btn-nav" title="Toggle Music">
+                    <i class="fas fa-music"></i>
                 </button>
                 <div class="hamburger">
                     <span></span>
@@ -62,6 +72,16 @@
                 </div>
             </div>
         </div>
+    </nav>
+    <!-- ========== MOBILE BOTTOM NAV ========== -->
+    <nav class="bottom-nav">
+        <a href="#home" class="bottom-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#about" class="bottom-nav-link"><i class="fas fa-user"></i><span>About</span></a>
+        <a href="#experience" class="bottom-nav-link"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+        <a href="#skills" class="bottom-nav-link"><i class="fas fa-code"></i><span>Skills</span></a>
+        <a href="#projects" class="bottom-nav-link"><i class="fas fa-folder"></i><span>Projects</span></a>
+        <a href="#certifications" class="bottom-nav-link"><i class="fas fa-certificate"></i><span>Certs</span></a>
+        <a href="#contact" class="bottom-nav-link"><i class="fas fa-envelope"></i><span>Contact</span></a>
     </nav>
 
     <!-- ========== HOME SECTION ========== -->
@@ -285,11 +305,11 @@
                 <div class="skills-col">
                     <h3 class="skill-category-title"><i class="fas fa-code"></i> Front End</h3>
                     <div class="skill-icons">
-                        <div class="skill-icon-item"><i class="devicon-react-original colored"></i><span>React.js</span></div>
-                        <div class="skill-icon-item"><i class="devicon-vuejs-plain colored"></i><span>Vue.js</span></div>
+                        <div class="skill-icon-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+                        <div class="skill-icon-item"><i class="devicon-vuejs-plain colored"></i><span>Vue</span></div>
                         <div class="skill-icon-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
                         <div class="skill-icon-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
-                        <div class="skill-icon-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                        <div class="skill-icon-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
                     </div>
                 </div>
                 <div class="skills-col">
@@ -302,6 +322,7 @@
                         <div class="skill-icon-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
                         <div class="skill-icon-item"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
                         <div class="skill-icon-item"><i class="devicon-supabase-plain colored"></i><span>Supabase</span></div>
+                        <div class="skill-icon-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
                     </div>
                 </div>
             </div>
@@ -1014,7 +1035,7 @@
                 </div>
                 <h3>Vice President for Academic Affairs</h3>
                 <p>IECEP - URS Morong Student Chapter</p>
-                <span class="cert-date">2023-2024</span>
+                <span class="cert-date">2024-2025</span>
                 <button class="cert-view-btn">
                     <i class="fas fa-search-plus"></i> View Certificate
                 </button>
@@ -1027,7 +1048,7 @@
                 </div>
                 <h3>IECEP National Student Officer</h3>
                 <p>Institute of Electronics Engineers of the Philippines</p>
-                <span class="cert-date">2023-2024</span>
+                <span class="cert-date">2024</span>
                 <button class="cert-view-btn">
                     <i class="fas fa-search-plus"></i> View Certificate
                 </button>

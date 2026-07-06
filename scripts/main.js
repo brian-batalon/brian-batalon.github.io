@@ -200,6 +200,24 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// ========== ACTIVE BOTTOM NAV LINK ON SCROLL ==========
+const bottomNavLinks = document.querySelectorAll('.bottom-nav-link');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + section.clientHeight) {
+            current = section.getAttribute('id');
+        }
+    });
+    bottomNavLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
 // ========== TYPING EFFECT ==========
 const typedElement = document.getElementById('typed');
 const words = ['Electronics Engineer', 'Electronics Technician', 'Safety Officer 2', 'Project Developer', 'AI Enthusiast', 'Tech Innovator', 'Sound Technician', 'Leader'];
@@ -544,31 +562,38 @@ document.addEventListener('keydown', (e) => {
 
 // ========== MUSIC PLAYER ==========
 const musicToggle = document.getElementById('musicToggle');
+const musicToggleMobile = document.getElementById('musicToggleMobile');
 const backgroundMusic = document.getElementById('backgroundMusic');
-const musicIcon = musicToggle.querySelector('i');
-
 let isMusicPlaying = false;
 
-musicToggle.addEventListener('click', () => {
+function toggleMusic() {
     if (isMusicPlaying) { pauseMusic(); } else { playMusic(); }
-});
+}
+
+function updateMusicIcon(playing) {
+    [musicToggle, musicToggleMobile].forEach(btn => {
+        if (!btn) return;
+        const icon = btn.querySelector('i');
+        if (playing) {
+            icon.classList.remove('fa-music'); icon.classList.add('fa-volume-up');
+            btn.classList.add('playing');
+        } else {
+            icon.classList.remove('fa-volume-up'); icon.classList.add('fa-music');
+            btn.classList.remove('playing');
+        }
+    });
+}
+
+if (musicToggle) musicToggle.addEventListener('click', toggleMusic);
+if (musicToggleMobile) musicToggleMobile.addEventListener('click', toggleMusic);
 
 function playMusic() {
     backgroundMusic.volume = 0.4;
-    backgroundMusic.play().then(() => {
-        isMusicPlaying = true;
-        musicToggle.classList.add('playing');
-        musicIcon.classList.remove('fa-music');
-        musicIcon.classList.add('fa-volume-up');
-    }).catch(() => {});
+    backgroundMusic.play().then(() => { isMusicPlaying = true; updateMusicIcon(true); }).catch(() => {});
 }
 
 function pauseMusic() {
-    backgroundMusic.pause();
-    isMusicPlaying = false;
-    musicToggle.classList.remove('playing');
-    musicIcon.classList.remove('fa-volume-up');
-    musicIcon.classList.add('fa-music');
+    backgroundMusic.pause(); isMusicPlaying = false; updateMusicIcon(false);
 }
 
 // ========== SMOOTH SCROLLING ==========
@@ -720,6 +745,86 @@ setInterval(() => {
     currentHeroImg = (currentHeroImg + 1) % heroImages.length;
     heroImages[currentHeroImg].classList.add('active');
 }, 3000);
+
+// ========== SEARCH FUNCTIONALITY ==========
+const searchInput = document.getElementById('searchInput');
+const searchDropdown = document.getElementById('searchDropdown');
+
+// Search data
+const searchData = [
+    { title: 'AZ Techworx Business Website', type: 'project', icon: 'fa-globe', link: '#projects' },
+    { title: 'HeatWatch', type: 'project', icon: 'fa-temperature-high', link: '#projects' },
+    { title: 'GradeMaster', type: 'project', icon: 'fa-graduation-cap', link: '#projects' },
+    { title: 'OTMSR Portal', type: 'project', icon: 'fa-hospital', link: '#projects' },
+    { title: 'Onion Disease Detection Dashboard', type: 'project', icon: 'fa-seedling', link: '#projects' },
+    { title: 'Chili Leaf Disease Dashboard', type: 'project', icon: 'fa-pepper-hot', link: '#projects' },
+    { title: 'Mushroom Disease Dashboard', type: 'project', icon: 'fa-disease', link: '#projects' },
+    { title: 'Color Detection Dashboard', type: 'project', icon: 'fa-palette', link: '#projects' },
+    { title: 'Shape Detection Dashboard', type: 'project', icon: 'fa-shapes', link: '#projects' },
+    { title: 'Arduino Medicine Reminder', type: 'pcb', icon: 'fa-microchip', link: '#projects' },
+    { title: '2-Way RF Communication Board', type: 'pcb', icon: 'fa-broadcast-tower', link: '#projects' },
+    { title: 'IoT Shoes Drying System', type: 'pcb', icon: 'fa-shoe-prints', link: '#projects' },
+    { title: 'Incuvision', type: 'thesis', icon: 'fa-egg', link: '#projects' },
+    { title: 'Smart LoBo Training Kit', type: 'thesis', icon: 'fa-microchip', link: '#projects' },
+    { title: 'React.js', type: 'skill', icon: 'fa-code', link: '#skills' },
+    { title: 'Python', type: 'skill', icon: 'fa-code', link: '#skills' },
+    { title: 'Machine Learning', type: 'skill', icon: 'fa-brain', link: '#skills' },
+    { title: 'PCB Design', type: 'skill', icon: 'fa-microchip', link: '#skills' },
+    { title: 'IoT', type: 'skill', icon: 'fa-wifi', link: '#skills' },
+    { title: 'Computer Vision', type: 'skill', icon: 'fa-eye', link: '#skills' },
+    { title: 'Embedded Systems', type: 'skill', icon: 'fa-microchip', link: '#skills' },
+    { title: 'Home', type: 'section', icon: 'fa-home', link: '#home' },
+    { title: 'About Me', type: 'section', icon: 'fa-user', link: '#about' },
+    { title: 'Experience', type: 'section', icon: 'fa-briefcase', link: '#experience' },
+    { title: 'Skills', type: 'section', icon: 'fa-code', link: '#skills' },
+    { title: 'GitHub Contributions', type: 'section', icon: 'fa-chart-line', link: '#github' },
+    { title: 'Projects', type: 'section', icon: 'fa-folder', link: '#projects' },
+    { title: 'Certifications', type: 'section', icon: 'fa-certificate', link: '#certifications' },
+    { title: 'Contact', type: 'section', icon: 'fa-envelope', link: '#contact' },
+];
+
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    
+    if (query === '') {
+        searchDropdown.classList.remove('active');
+        return;
+    }
+    
+    const results = searchData.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.type.toLowerCase().includes(query)
+    );
+    
+    if (results.length === 0) {
+        searchDropdown.innerHTML = '<p class="search-no-results">No results found</p>';
+        searchDropdown.classList.add('active');
+        return;
+    }
+    
+    searchDropdown.innerHTML = results.map(item => `
+        <div class="search-result-item" onclick="window.location.href='${item.link}'; searchDropdown.classList.remove('active'); searchInput.value='';">
+            <i class="fas ${item.icon}"></i>
+            <div>
+                <span>${item.title}</span><br>
+                <small>${item.type}</small>
+            </div>
+        </div>
+    `).join('');
+    searchDropdown.classList.add('active');
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) {
+        searchDropdown.classList.remove('active');
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        searchDropdown.classList.remove('active');
+    }
+});
 
 // ========== INITIALIZATION ==========
 console.log('%c Portfolio Website Ready! %c🚀', 'font-size: 20px; font-weight: bold; color: #6c5ce7;', 'font-size: 20px;');
