@@ -689,5 +689,11 @@ document.querySelectorAll('.dv-live-link').forEach(link => {
     });
 });
 
+// ========== ABOUT EXPAND ==========
+document.getElementById('aboutExpandBtn').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.getElementById('aboutExpandContent').classList.toggle('open');
+});
+
 // ========== INITIALIZATION ==========
 console.log('%c Portfolio Website Ready! %c🚀', 'font-size: 20px; font-weight: bold; color: #6c5ce7;', 'font-size: 20px;');
