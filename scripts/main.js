@@ -291,6 +291,15 @@ const projectsData = {
         liveLink: 'https://otmsr-portal.vercel.app',
         codeLink: 'https://github.com/brian-batalon/otmsr-portal'
     },
+    soft5: {
+        title: 'Panahon AI',
+        description: 'Panahon AI is an intelligent weather monitoring and AI-powered prediction system designed to serve all 1,634 municipalities across the Philippines. It combines real-time data from Open-Meteo with custom-trained XGBoost machine learning models to predict temperature, humidity, cloud cover, and rain probability 6, 12, and 24 hours ahead on an interactive Leaflet map.',
+        type: 'expand',
+        videoUrl: 'assets/videos/panahon.mp4',
+        tech: ['React', 'FastAPI', 'XGBoost', 'Supabase', 'Open-Meteo'],
+        liveLink: 'https://panahon-ai.vercel.app/',
+        codeLink: 'https://github.com/brian-batalon/panahon-ai'
+    },
     pcb1: {
         title: 'Arduino-based Medicine Reminder',
         description: 'This Arduino Nano-based medicine reminder uses an RTC DS1302 module for precise timekeeping, a 16x2 LCD and three navigation switches for user configuration, and an active buzzer with three LEDs to deliver audible and visual medication alerts.',
