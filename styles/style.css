@@ -159,8 +159,8 @@ a { text-decoration: none; }
 .hero-slideshow img.active { opacity: 1; }
 .image-wrapper:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(108, 92, 231, 0.5), 0 0 80px rgba(108, 92, 231, 0.25); transition: all 0.5s ease; }
 @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 .scroll-indicator { position: absolute; bottom: 20px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); animation: bounce 2s infinite; z-index: 1; pointer-events: none; }
-
 /* ========== SECTION STYLES ========== */
 section { padding: 100px 2rem; }
 .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--text-primary); }
@@ -540,7 +540,7 @@ body:has(.expanded-overlay) .certifications {
 @media (max-width: 768px) {
     html { font-size: 14px; }
     section { padding: 80px 1rem 60px; }
-    .hero { padding: 120px 1rem 100px; }
+    .hero { padding: 120px 1rem 140px; position: relative; }
     .bottom-nav { display: flex; }
     .nav-pill { display: none; }
     .hamburger { display: none !important; }
@@ -563,7 +563,7 @@ body:has(.expanded-overlay) .certifications {
     .video-modal-content { width: 95%; }
     .image-wrapper { width: 220px; height: 220px; -webkit-mask-image: radial-gradient(circle, black 100%, transparent 100%); mask-image: radial-gradient(circle, black 100%, transparent 100%); }
     .hero-content { gap: 1.5rem; }
-    .scroll-indicator { bottom: 80px; }
+    .scroll-indicator { margin-bottom: -50px; }
     .nav-logo { font-size: 0.8rem; }
     .social-links { margin-bottom: 1rem; }
     .about-more { padding: 0 1rem; }
