@@ -300,6 +300,24 @@ const projectsData = {
         liveLink: 'https://panahon-ai.vercel.app/',
         codeLink: 'https://github.com/brian-batalon/panahon-ai'
     },
+    soft6: {
+        title: 'HRManager',
+        description: 'A desktop Human Resource Management System built for small to medium businesses. Features multi-user auth, employee management, attendance tracking, leave approvals, Philippine payroll with auto-calculated deductions (SSS, PhilHealth, Pag-IBIG, Withholding Tax), payslip generation, Excel/PDF export, email payslips via SMTP, and real-time multi-user sync via Supabase.',
+        type: 'expand',
+        videoUrl: 'assets/videos/hrmanager.mp4',
+        tech: ['React', 'TypeScript', 'Tauri', 'Rust', 'Supabase', 'Tailwind CSS'],
+        liveLink: 'https://hr-management-systems.vercel.app/',
+        codeLink: 'https://github.com/brian-batalon/hrmanager-launch'
+    },
+    soft7: {
+        title: 'HRManager Launch Website',
+        description: 'A modern, responsive launch website for the HRManager desktop application. Features a polished hero section, download buttons for EXE/MSI installers, autoplay demo video in a Mac-style preview window, animated floating tech-stack labels, feature sections, and system requirements.',
+        type: 'expand',
+        videoUrl: 'assets/videos/hrmanager-launch.mp4',
+        tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Lucide React'],
+        liveLink: 'https://hr-management-systems.vercel.app/',
+        codeLink: 'https://github.com/brian-batalon/hrmanager-launch'
+    },
     pcb1: {
         title: 'Arduino-based Medicine Reminder',
         description: 'This Arduino Nano-based medicine reminder uses an RTC DS1302 module for precise timekeeping, a 16x2 LCD and three navigation switches for user configuration, and an active buzzer with three LEDs to deliver audible and visual medication alerts.',
