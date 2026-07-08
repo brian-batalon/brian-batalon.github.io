@@ -448,6 +448,7 @@ body:has(.expanded-overlay) .certifications {
 [data-theme="light"] .skill-icon-item img[alt="visible"] { filter: invert(1); }
 [data-theme="light"] .skill-icon-item img[alt="define-location"] { filter: invert(1); }
 [data-theme="light"] .skill-icon-item img[alt="goal"] { filter: invert(1); }
+[data-theme="dark"] .skill-icon-item i.devicon-rust-plain { filter: invert(1); }
 
 @keyframes iconPulse {
     0%, 100% { transform: scale(1); }
