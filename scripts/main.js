@@ -753,7 +753,7 @@ document.getElementById('aboutExpandBtn').addEventListener('click', function() {
         if (!window.aboutMapLoaded) {
             const map = L.map('about-map').setView([14.525, 121.16], 13);
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; OpenStreetMap'
+                attribution: ''
             }).addTo(map);
             L.marker([14.525, 121.16]).addTo(map)
                 .bindPopup('<b>Angono, Rizal</b><br>Art Capital of the Philippines')
