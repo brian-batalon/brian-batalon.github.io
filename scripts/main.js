@@ -318,6 +318,15 @@ const projectsData = {
         liveLink: 'https://hr-management-systems.vercel.app/',
         codeLink: 'https://github.com/brian-batalon/hrmanager-launch'
     },
+    soft8: {
+        title: 'AZ Techworx Professional Website',
+        description: 'A professional portfolio and business website built for a team of licensed Electronics and Communications Engineers offering end-to-end technology solutions including ML/DL, 3D printing, full-stack web development, circuit design, embedded systems, and private tutoring. Features animated SVG circuit background, floating gradient orbs, spinning tech ring, auto-scrolling video gallery, split-screen project showcase, testimonial carousel with privacy-masked names, and Formspree contact integration.',
+        type: 'expand',
+        videoUrl: 'assets/videos/az2.mp4',
+        tech: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
+        liveLink: 'https://www.aztechworx.xyz/',
+        codeLink: 'https://github.com/brian-batalon/az-techworx-website'
+    },
     pcb1: {
         title: 'Arduino-based Medicine Reminder',
         description: 'This Arduino Nano-based medicine reminder uses an RTC DS1302 module for precise timekeeping, a 16x2 LCD and three navigation switches for user configuration, and an active buzzer with three LEDs to deliver audible and visual medication alerts.',
