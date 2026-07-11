@@ -650,7 +650,7 @@ if (contactForm) {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         try {
-            const response = await fetch('https://formspree.io/f/mzdqjblz', { method: 'POST', body: new FormData(contactForm), headers: { 'Accept': 'application/json' } });
+            const response = await fetch('https://formspree.io/f/xlgyqqyj', { method: 'POST', body: new FormData(contactForm), headers: { 'Accept': 'application/json' } });
             if (response.ok) { submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!'; submitBtn.style.background = '#00b894'; contactForm.reset(); }
             else { submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed'; submitBtn.style.background = '#d63031'; }
         } catch { submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed'; submitBtn.style.background = '#d63031'; }
