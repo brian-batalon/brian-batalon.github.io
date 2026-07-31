@@ -327,6 +327,24 @@ const projectsData = {
         liveLink: 'https://www.aztechworx.xyz/',
         codeLink: 'https://github.com/brian-batalon/az-techworx-website'
     },
+    soft9: {
+        title: 'WalletTracker',
+        description: 'WalletTracker is a financial management web app for tracking company allowances, field area expenses, and payroll. Features include a digital ATM-style card with flip animation, collapsible field area containers with color-coded allowance cards (transport, meal, hotel), built-in accounting calculator, and real-time expense tracking with progress bars.',
+        type: 'expand',
+        videoUrl: 'assets/videos/wt.mp4',
+        tech: ['React 19', 'Vite', 'TailwindCSS', 'Supabase', 'React Router'],
+        liveLink: 'https://wallet-tracker-wine.vercel.app/',
+        codeLink: 'https://github.com/brian-batalon/wallet-tracker'
+    },
+    soft10: {
+        title: 'RouteMeter',
+        description: 'RouteMeter is a real-world route tracking web app that measures distance between multiple points using actual road paths. Features customizable markers, color-coded route lines, stop-over waypoints, and a responsive interface optimized for both mobile and desktop.',
+        type: 'expand',
+        videoUrl: 'assets/videos/rm.mp4',
+        tech: ['HTML5', 'CSS3', 'JavaScript', 'Leaflet.js', 'OSRM', 'Nominatim'],
+        liveLink: 'https://routemeter.vercel.app/',
+        codeLink: 'https://github.com/brian-batalon/routemeter'
+    },
     pcb1: {
         title: 'Arduino-based Medicine Reminder',
         description: 'This Arduino Nano-based medicine reminder uses an RTC DS1302 module for precise timekeeping, a 16x2 LCD and three navigation switches for user configuration, and an active buzzer with three LEDs to deliver audible and visual medication alerts.',
@@ -788,20 +806,35 @@ const searchDropdown = document.getElementById('searchDropdown');
 
 // Search data
 const searchData = [
+    // Software Development Projects
     { title: 'AZ Techworx Business Website', type: 'project', icon: 'fa-globe', link: '#projects' },
     { title: 'HeatWatch', type: 'project', icon: 'fa-temperature-high', link: '#projects' },
     { title: 'GradeMaster', type: 'project', icon: 'fa-graduation-cap', link: '#projects' },
     { title: 'OTMSR Portal', type: 'project', icon: 'fa-hospital', link: '#projects' },
+    { title: 'Panahon AI', type: 'project', icon: 'fa-cloud-sun-rain', link: '#projects' },
+    { title: 'HRManager', type: 'project', icon: 'fa-users', link: '#projects' },
+    { title: 'HRManager Launch Website', type: 'project', icon: 'fa-desktop', link: '#projects' },
+    { title: 'AZ Techworx Professional Website V2', type: 'project', icon: 'fa-globe', link: '#projects' },
+    { title: 'WalletTracker', type: 'project', icon: 'fa-wallet', link: '#projects' },
+    { title: 'RouteMeter', type: 'project', icon: 'fa-route', link: '#projects' },
+    
+    // Data Visualization Projects
     { title: 'Onion Disease Detection Dashboard', type: 'project', icon: 'fa-seedling', link: '#projects' },
     { title: 'Chili Leaf Disease Dashboard', type: 'project', icon: 'fa-pepper-hot', link: '#projects' },
     { title: 'Mushroom Disease Dashboard', type: 'project', icon: 'fa-disease', link: '#projects' },
     { title: 'Color Detection Dashboard', type: 'project', icon: 'fa-palette', link: '#projects' },
     { title: 'Shape Detection Dashboard', type: 'project', icon: 'fa-shapes', link: '#projects' },
+    
+    // PCB Designs
     { title: 'Arduino Medicine Reminder', type: 'pcb', icon: 'fa-microchip', link: '#projects' },
     { title: '2-Way RF Communication Board', type: 'pcb', icon: 'fa-broadcast-tower', link: '#projects' },
     { title: 'IoT Shoes Drying System', type: 'pcb', icon: 'fa-shoe-prints', link: '#projects' },
+    
+    // Thesis Projects
     { title: 'Incuvision', type: 'thesis', icon: 'fa-egg', link: '#projects' },
     { title: 'Smart LoBo Training Kit', type: 'thesis', icon: 'fa-microchip', link: '#projects' },
+    
+    // Skills
     { title: 'React.js', type: 'skill', icon: 'fa-code', link: '#skills' },
     { title: 'Python', type: 'skill', icon: 'fa-code', link: '#skills' },
     { title: 'Machine Learning', type: 'skill', icon: 'fa-brain', link: '#skills' },
@@ -809,6 +842,8 @@ const searchData = [
     { title: 'IoT', type: 'skill', icon: 'fa-wifi', link: '#skills' },
     { title: 'Computer Vision', type: 'skill', icon: 'fa-eye', link: '#skills' },
     { title: 'Embedded Systems', type: 'skill', icon: 'fa-microchip', link: '#skills' },
+    
+    // Sections
     { title: 'Home', type: 'section', icon: 'fa-home', link: '#home' },
     { title: 'About Me', type: 'section', icon: 'fa-user', link: '#about' },
     { title: 'Experience', type: 'section', icon: 'fa-briefcase', link: '#experience' },
