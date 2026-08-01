@@ -366,6 +366,13 @@ const projectsData = {
         image: 'assets/images/projects/pcb3.png',
         tech: ['EasyEDA', 'Embedded Systems', 'Arduino', 'Raspberry Pi']
     },
+    pcb4: {
+        title: 'Auto-Failover Variable Power Supply',
+        description: 'The Auto-Failover Variable Power Supply is a high-reliability dual-channel power system designed to deliver uninterrupted DC voltage to critical bench equipment and sensitive prototypes. Utilizing LM317 linear regulators for smooth voltage control, the supply relies on a dedicated auxiliary monitoring stage that tracks the primary power rail in real time. If the main supply collapses, a P-channel MOSFET immediately triggers a 12V SPDT relay to transfer AC mains power to the backup transformer system—ensuring instant, hardware-level switchover without microcontrollers or manual intervention.',
+        type: 'image',
+        image: 'assets/images/projects/pcb4.png',
+        tech: ['EasyEDA', 'LM317', 'Power Supply', 'Relay Logic']
+    },
     'thesis1-pdf': {
         title: 'Incuvision: An Enhanced Chicken Egg Incubator with Computer Vision for Fertility Detection',
         description: 'An automated chicken egg incubator system using computer vision and deep learning for fertility detection, combining embedded hardware with AI-powered image processing.',
